@@ -12,8 +12,8 @@ describe Regnbue do
   end
 
   test "format_string with simple strings" do
-    assert Regnbue.format_string({:white, ""}) == "".colorize(:white)
-    assert Regnbue.format_string({:white, "sentence"}) == "sentence".colorize(:white)
+    assert Regnbue.format_string({:white, ""}) == "".colorize(:white).to_s
+    assert Regnbue.format_string({:white, "sentence"}) == "sentence".colorize(:white).to_s
   end
 
   test "format_string with nested strings" do
@@ -29,7 +29,16 @@ describe Regnbue do
       {:red, "you!"},
     })
 
-    expected = ["This is ", ["the ", "last ".colorize(:red), "warning "].join.colorize(:yellow), "for all of ", "you!".colorize(:red)].join.colorize(:white)
+    expected = [
+      "This is ".colorize(:white),
+      [
+        "the ".colorize(:yellow),
+        "last ".colorize(:red),
+        "warning ".colorize(:yellow),
+      ].join,
+      "for all of ".colorize(:white),
+      "you!".colorize(:red),
+    ].join
 
     assert str == expected
   end

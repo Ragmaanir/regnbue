@@ -24,14 +24,14 @@ module Regnbue
         {% if e.is_a?(TupleLiteral) %}
           {% output << "Regnbue.format_string(#{e})" %}
         {% else %}
-          {% output << "#{e}" %}
+          {% output << "#{e}.colorize(#{color} || :white)" %}
         {% end %}
       {% end %}
     {% end %}
 
     {% output = output.join(",") %}
 
-    {% res = "[" + output + "]" + ".join.colorize(#{color} || :white)" %}
+    {% res = "[" + output + "]" + ".join" %}
 
     {{res.id}}
   end
