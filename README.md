@@ -1,4 +1,4 @@
-# regnbue
+# regnbue [![Build Status](https://travis-ci.org/Ragmaanir/regnbue.svg?branch=master)](https://travis-ci.org/Ragmaanir/regnbue)
 
 Just some helper functions to format/color strings.
 
