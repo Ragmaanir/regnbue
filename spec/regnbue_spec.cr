@@ -42,4 +42,19 @@ describe Regnbue do
 
     assert str == expected
   end
+
+  test "format_string with conditions" do
+    str1 = Regnbue.format_string({
+      (:red if 1 > 5),
+      "ohoh!",
+    })
+
+    str2 = Regnbue.format_string({
+      (:red if 1 > 0),
+      "ohoh!",
+    })
+
+    assert str1 == "ohoh!".colorize(:white).to_s
+    assert str2 == "ohoh!".colorize(:red).to_s
+  end
 end
