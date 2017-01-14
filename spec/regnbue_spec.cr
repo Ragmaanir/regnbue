@@ -16,6 +16,10 @@ describe Regnbue do
     assert Regnbue.format_string({:white, "sentence"}) == "sentence".colorize(:white).to_s
   end
 
+  test "tuple entries have to be enclosed in parentheses" do
+    assert Regnbue.format_string({:green, "%-3d" % 5}) == "5  ".colorize(:green).to_s
+  end
+
   test "format_string with nested strings" do
     str = Regnbue.format_string({
       :white,

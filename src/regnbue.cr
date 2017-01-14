@@ -24,7 +24,7 @@ module Regnbue
         {% if e.is_a?(TupleLiteral) %}
           {% output << "Regnbue.format_string(#{e})" %}
         {% else %}
-          {% output << "#{e}.colorize(#{color} || :white)" %}
+          {% output << "(#{e}).colorize((#{color}) || :white)" %}
         {% end %}
       {% end %}
     {% end %}
