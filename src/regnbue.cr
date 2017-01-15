@@ -1,10 +1,16 @@
 require "./regnbue/*"
 
 module Regnbue
+  COLOR_REGEX = %r{\e\[\d\d?m}
+
   # Regnbue.format_large_number(1234567)
   # #=> "1,234,567"
   def self.format_large_number(number, separator : String = ",")
     number.to_s.reverse.gsub(/(\d{3})(?=.)/, "\\1#{separator}").reverse
+  end
+
+  def self.uncolor(str : String)
+    str.gsub(COLOR_REGEX, "")
   end
 
   # Takes a tuple of the form:

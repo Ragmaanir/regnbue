@@ -61,4 +61,21 @@ describe Regnbue do
     assert str1 == "ohoh!".colorize(:white).to_s
     assert str2 == "ohoh!".colorize(:red).to_s
   end
+
+  test "uncoloring" do
+    assert Regnbue.uncolor("test".colorize(:red).to_s) == "test"
+
+    str = Regnbue.format_string({
+      :white,
+      "This is ",
+      {:yellow,
+        "the ",
+        {:red, "last "},
+        "warning ",
+      },
+      "for all of ",
+      {:red, "you!"},
+    })
+    assert Regnbue.uncolor(str) == "This is the last warning for all of you!"
+  end
 end
