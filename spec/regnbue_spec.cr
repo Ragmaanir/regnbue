@@ -1,7 +1,7 @@
 require "./spec_helper"
 
 describe Regnbue do
-  test "format_large_number" do
+  it "format_large_number" do
     assert Regnbue.format_large_number(0) == "0"
     assert Regnbue.format_large_number(300) == "300"
     assert Regnbue.format_large_number(1300) == "1,300"
@@ -11,16 +11,16 @@ describe Regnbue do
     assert Regnbue.format_large_number(1300, "--") == "1--300"
   end
 
-  test "format_string with simple strings" do
+  it "format_string with simple strings" do
     assert Regnbue.format_string({:white, ""}) == "".colorize(:white).to_s
     assert Regnbue.format_string({:white, "sentence"}) == "sentence".colorize(:white).to_s
   end
 
-  test "tuple entries have to be enclosed in parentheses" do
+  it "tuple entries have to be enclosed in parentheses" do
     assert Regnbue.format_string({:green, "%-3d" % 5}) == "5  ".colorize(:green).to_s
   end
 
-  test "format_string with nested strings" do
+  it "format_string with nested strings" do
     str = Regnbue.format_string({
       :white,
       "This is ",
@@ -47,7 +47,7 @@ describe Regnbue do
     assert str == expected
   end
 
-  test "format_string with conditions" do
+  it "format_string with conditions" do
     str1 = Regnbue.format_string({
       (:red if 1 > 5),
       "ohoh!",
@@ -62,7 +62,7 @@ describe Regnbue do
     assert str2 == "ohoh!".colorize(:red).to_s
   end
 
-  test "uncoloring" do
+  it "uncoloring" do
     assert Regnbue.uncolor("test".colorize(:red).to_s) == "test"
 
     str = Regnbue.format_string({

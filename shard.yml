@@ -14,6 +14,9 @@ license: MIT
 #     version: ~> 0.2
 
 development_dependencies:
-  microtest:
-    github: ragmaanir/microtest
-    branch: master
+  minitest:
+    github: ysbaddaden/minitest.cr
+    version: 0.3.5
+#   microtest:
+#     github: ragmaanir/microtest
+#     branch: master
